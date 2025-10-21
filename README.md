@@ -4,3 +4,8 @@ The repo contains three QuantConnect Algorithm each demonstrating differrent fea
 Each successive addition follows a geometric scaling:    
 Pn=P0⋅r^(n−1)     
 where Pn is the size of the nth addition, P0 is the initial position, and r is the scaling ratio set as 0.5.​        
+
+$$    
+\text{Average Price} = \frac{\displaystyle\sum_{i=1}^{n} (P_i \times Q_i)}{\displaystyle\sum_{i=1}^{n} Q_i}
+$$   
+   
