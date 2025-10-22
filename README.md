@@ -18,6 +18,8 @@ $$
 $$    
 
 The *Stop Loss* is adjusted based on the maximum risk of equity which is 8%.    
+*Edge Case:* When calculating the quantity of futures contract with given target equity percent, the min future contract
+1 was used so that the algorithm doesnt misses the opportunity to place a trade or adding a position.   
 ### 3. Connecting to QuantConnect using RESTAPI Interface
 This snippet contains the code to connect to the quantconnect project and edit parameters and run different available 
 features.       
