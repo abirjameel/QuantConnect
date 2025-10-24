@@ -38,18 +38,18 @@ except requests.exceptions.RequestException as e:
 
 
 # Read all projects
-try:
-    response = requests.post(f"{BASE_URL}projects/read", headers=get_headers())
-    response.raise_for_status() # Raise an exception for HTTP errors
-    print("Authentication successful:", response.json())
-except requests.exceptions.RequestException as e:
-    print(f"Error during API request: {e}")
+# try:
+#     response = requests.post(f"{BASE_URL}projects/read", headers=get_headers())
+#     response.raise_for_status() # Raise an exception for HTTP errors
+#     # print("Authentication successful:", response.json())
+# except requests.exceptions.RequestException as e:
+#     print(f"Error during API request: {e}")
 
 
 # Get a Project's Detail
 try:
     payload = {
-        "id": 25743424  # ID of the project to read
+        "projectId": 25725646  # ID of the project to read
     }
     response = requests.post(f"{BASE_URL}projects/read", headers=get_headers(), json=payload)
     response.raise_for_status() # Raise an exception for HTTP errors
@@ -58,15 +58,22 @@ except requests.exceptions.RequestException as e:
     print(f"Error during API request: {e}")
 
 
-# Create a New Test Project
+# Update the Project Params
 
 try:
     payload = {
-    "name": f"TestProject_{int(time())}",  # Unique project name using current timestamp
-    "language": "Py"  # Programming language for the project (Python)
-}
-    response = requests.post(f"{BASE_URL}/projects/create", headers=get_headers(), json=payload)
+        "projectId": 25725646, # ID of the project to read
+        "name": "Future Rollover",
+        "parameters": [
+            {
+               "key": "ma_lookback",
+               "value": "150"
+            }
+        ]
+    }
+    response = requests.post(f"{BASE_URL}projects/update", headers=get_headers(), json=payload)
     response.raise_for_status() # Raise an exception for HTTP errors
     print("Authentication successful:", response.json())
 except requests.exceptions.RequestException as e:
     print(f"Error during API request: {e}")
+
